@@ -1,10 +1,7 @@
 import os
-import logging
-from urllib.request import urlopen
-import boto3
-from botocore.exceptions import ClientError
+import json
 
-s3_client = boto3.client("s3")
+S3_BUCKET = os.getenv('BUCKET_NAME')
 
 # Function to get a file from url
 # Function to upload image to S3
@@ -14,3 +11,10 @@ s3_client = boto3.client("s3")
 def handler(event, context):
     url = event["queryStringParameters"]["url"]
     name = event["queryStringParameters"]["name"]
+
+    # Get the file from the url
+
+    return {
+        'statusCode': 200,
+        'body': json.dumps('Successfully Uploaded Img!')
+    }
