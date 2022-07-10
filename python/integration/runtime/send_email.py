@@ -1,6 +1,4 @@
-import requests
-from json2xml import json2xml
-
+from xml.etree.ElementTree import Element, ElementTree, tostring
 
 # Convert JSON string to XML string
 # Send XML string with HTTP POST
@@ -10,5 +8,6 @@ from json2xml import json2xml
 def handler(event, context):
 
     return {
+        'statusCode': 200,
         "message": "E-mail sent"
     }
