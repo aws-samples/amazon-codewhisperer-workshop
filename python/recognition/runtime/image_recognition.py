@@ -30,7 +30,6 @@ def writeToDynamoDb(tableName, item):
         Item=item
     )
 
-
 # Send message to SNS
 def triggerSNS(message):
     response = sns.publish(
@@ -40,7 +39,6 @@ def triggerSNS(message):
 
     )
     print(response)
-
 
 # Delete message from SQS
 def deleteFromSqs(receipt_handle):
@@ -52,7 +50,6 @@ def deleteFromSqs(receipt_handle):
 
 def handler(event, context):
     print(event)
-    print(type(event))
     try:
         # 1. Read message from SQS
         for Record in event.get("Records"):
@@ -72,7 +69,7 @@ def handler(event, context):
                 for label in db_labels:
                     db_result.append(label["Name"])
                 db_item = {
-                    "image_name": {"S": key},
+                    "image": {"S": key},
                     "labels": {"S": str(db_result)}
                 }
 
