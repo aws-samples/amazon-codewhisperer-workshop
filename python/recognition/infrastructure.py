@@ -26,7 +26,7 @@ class RekognitionStack(Stack):
         table = ddb.Table(
             self,
             "Classifications",
-            partition_key=ddb.Attribute(name="image_name", type=ddb.AttributeType.STRING)
+            partition_key=ddb.Attribute(name="image", type=ddb.AttributeType.STRING)
         )
 
         # create Lambda function
