@@ -2,6 +2,11 @@ import os
 import logging
 import json
 from urllib.request import urlopen
+from botocore.exceptions import ClientError
+import boto3 
+
+S3_BUCKET=os.getenv('BUCKET_NAME')
+s3_client = boto3.client('s3')
 
 # Function to get a file from url
 def get_file_from_url(url):
@@ -31,8 +36,6 @@ def upload_image_to_s3(bucket, key, data):
         print(e)
         return False
 
-# <<Amazon CodeWhisperer generated code goes here>>
-
 def handler(event, context):
     url = event["queryStringParameters"]["url"]
     name = event["queryStringParameters"]["name"]
@@ -42,5 +45,6 @@ def handler(event, context):
         'statusCode': 200,
         'body': json.dumps('Successfully Uploaded Img!')
     }
+
 
     
