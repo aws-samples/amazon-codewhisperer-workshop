@@ -3,8 +3,8 @@ import boto3
 import json
 
 table_name = os.environ["TABLE_NAME"]
-attribute_name = "image_name"
 
+# 1.) Function to list all items from a DynamoDB table
 def list_items(table_name):
     dynamodb = boto3.resource("dynamodb")
     table = dynamodb.Table(table_name)

@@ -11,7 +11,7 @@ queue_url = os.environ["SQS_QUEUE_URL"]
 table_name = os.environ["TABLE_NAME"]
 topic_arn = os.environ["TOPIC_ARN"]
 
-# Calls Amazon Rekognition DetectLabels API to classify images in S3
+# 2.) Calls Amazon Rekognition DetectLabels API to classify images in S3
 def detectImgLabels(bucket_name, key, maxLabels=10, minConfidence=70):
     image = {
         "S3Object": {
@@ -23,14 +23,14 @@ def detectImgLabels(bucket_name, key, maxLabels=10, minConfidence=70):
     return response
 
 
-# Write item to DynamoDB
+# 3.) Write item to DynamoDB
 def writeToDynamoDb(tableName, item):
     dynamodb.put_item(
         TableName=tableName,
         Item=item
     )
 
-# Send message to SNS
+# 4.) Send message to SNS
 def triggerSNS(message):
     response = sns.publish(
         TopicArn=topic_arn,
@@ -40,7 +40,7 @@ def triggerSNS(message):
     )
     print(response)
 
-# Delete message from SQS
+# 5.) Delete message from SQS
 def deleteFromSqs(receipt_handle):
     sqs.delete_message(
         QueueUrl=queue_url,
