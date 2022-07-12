@@ -7,7 +7,7 @@ import botocore.exceptions
 s3_client = boto3.client("s3")
 S3_BUCKET = os.getenv('BUCKET_NAME')
 
-# Function to get a file from url
+# 1.) Function to get a file from url
 def get_file_from_url(url):
     try:
         response = requests.get(url)
@@ -15,7 +15,7 @@ def get_file_from_url(url):
     except requests.exceptions.RequestException as e:
         print(e)
 
-# Function to upload image to S3
+# 2.) Function to upload image to S3
 def upload_image_to_s3(bucket, key, data):
     """
     Uploads an image to S3
@@ -35,7 +35,9 @@ def handler(event, context):
     url = event["queryStringParameters"]["url"]
     name = event["queryStringParameters"]["name"]
 
+    # pass the output of function #1 as input to function #2
     upload_image_to_s3(S3_BUCKET, name, get_file_from_url(url))
+    
     return {
         'statusCode': 200,
         'body': json.dumps('Successfully Uploaded Img!')
