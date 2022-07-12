@@ -15,7 +15,7 @@ def list_items(table_name):
 # <<Amazon CodeWhisperer generated code goes here>>
 
 def handler(event, context):
-    # 1. Scan items from DynamoDB
+    # call method 1.) to scan items from DynamoDB
     response = list_items(table_name)
     return {
         "body": json.dumps(response),
