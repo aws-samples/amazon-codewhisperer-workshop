@@ -11,37 +11,46 @@ queue_url = os.environ["SQS_QUEUE_URL"]
 table_name = os.environ["TABLE_NAME"]
 topic_arn = os.environ["TOPIC_ARN"]
 
-# Detect labels from image with Rekognition
-# Save labels to DynamoDB
-# Publish item to SNS
-# Delete message from SQS
+# 1.) Detect labels from image with Rekognition
+
+# 2.) Save labels to DynamoDB
+
+# 3.) Publish item to SNS
+
+# 4.) Delete message from SQS
 
 # <<Amazon CodeWhisperer generated code goes here>>
-
 
 
 def handler(event, context):
     print(event)
     print(type(event))
     try:
-        # 1. process message from SQS
+        # process message from SQS
         for Record in event.get("Records"):
             receipt_handle = Record.get("receiptHandle")
             for record in json.loads(Record.get("body")).get("Records"):
                 bucket_name = record.get("s3").get("bucket").get("name")
                 key = record.get("s3").get("object").get("key")
 
-                # 2. Use Amazon Rekognition to recognize the image
+                # call method 1.) to generate image label and store as var "labels"
 
+                # code snippet to create dynamodb item from labels
+                db_result = []
+                json_labels = json.dumps(labels["Labels"])
+                db_labels = json.loads(json_labels)
+                for label in db_labels:
+                    db_result.append(label["Name"])
+                db_item = {
+                    "image": {"S": key},
+                    "labels": {"S": str(db_result)}
+                }
 
-                # 3. Persist result on DynamoDB
+                # call method 2.) to store "db_item" result on DynamoDB
+                
+                # call method 3.) to send message to SNS
 
-
-                # 4. Send message to SNS
-
-
-                # 5. Delete img from SQS
-
+                # call method 4.) to delete img from SQS
 
     except Exception as e:
         print(e)
