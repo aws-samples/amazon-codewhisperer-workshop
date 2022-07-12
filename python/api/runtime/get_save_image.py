@@ -18,7 +18,7 @@ def handler(event, context):
     name = event["queryStringParameters"]["name"]
 
     # pass the output of function #1 as input to function #2
-    download_image(url, name)
+
     return {
         'statusCode': 200,
         'body': json.dumps('Successfully Uploaded Img!')
