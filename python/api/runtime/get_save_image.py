@@ -1,21 +1,19 @@
 import os
-import logging
 import json
-from urllib.request import urlopen
+import boto3
+import requests
+import botocore.exceptions
+
+s3_client = boto3.client("s3")
+S3_BUCKET = os.getenv('BUCKET_NAME')
 
 # Function to get a file from url
 def get_file_from_url(url):
-    """
-    Downloads a file from a url
-    """
     try:
-        print("Downloading file from url: " + url)
-        response = urlopen(url)
-        return response.read()
-    except Exception as e:
-        print("Error downloading file from url: " + url)
+        response = requests.get(url)
+        return response
+    except requests.exceptions.RequestException as e:
         print(e)
-        return None
 
 # Function to upload image to S3
 def upload_image_to_s3(bucket, key, data):
@@ -26,7 +24,7 @@ def upload_image_to_s3(bucket, key, data):
         print("Uploading image to S3")
         s3_client.put_object(Body=data, Bucket=bucket, Key=key)
         return True
-    except ClientError as e:
+    except botocore.exceptions.ClientError as e:
         print("Error uploading image to S3")
         print(e)
         return False
