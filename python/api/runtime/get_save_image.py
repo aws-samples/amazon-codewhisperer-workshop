@@ -11,7 +11,7 @@ S3_BUCKET = os.getenv('BUCKET_NAME')
 def get_file_from_url(url):
     try:
         response = requests.get(url)
-        return response
+        return response.content
     except requests.exceptions.RequestException as e:
         print(e)
 
