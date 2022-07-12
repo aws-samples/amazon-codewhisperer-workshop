@@ -1,7 +1,7 @@
 from xml.etree.ElementTree import Element, tostring
 import requests
 
-# Transform json to xml
+# 1.) Convert JSON string to XML string
 def json_to_xml(json_data):
     """
     :param json_data: json data
@@ -16,7 +16,7 @@ def json_to_xml(json_data):
             xml_data[-1].text = str(value)
     return xml_data
 
-#Send message via HTTP post to the external e-mail server
+# 2.) Send XML string with HTTP POST
 def post(url, data):
     try:
         r = requests.post(url, data=data)
@@ -24,22 +24,13 @@ def post(url, data):
     except requests.exceptions.RequestException as e:
         print(e)
 
-# Function to convert JSON to XML
-def json_to_xml(json_data):
-    return(json2xml.Json2xml(json_data).to_xml())
-
-#Send message via HTTP post to the external e-mail server
-def post(url, data):
-    try:
-        r = requests.post(url, data=data)
-        return r.text
-    except requests.exceptions.RequestException as e:
-        print(e)
 
 def handler(event, context):
     xml = json_to_xml(event)
     xmlstr = tostring(xml, encoding='utf8', method='xml')
     print(xmlstr)
+    # post('https://www.example.com/sendmail', xml)
     return {
-        "message": "E-mail sent"
+        "status": 200,
+        "message": "Success!"
     }
