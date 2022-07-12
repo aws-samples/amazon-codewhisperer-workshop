@@ -1,19 +1,24 @@
 import os
 import json
+import boto3
+import requests
+import botocore.exceptions
 
+s3_client = boto3.client("s3")
 S3_BUCKET = os.getenv('BUCKET_NAME')
 
-# Function to get a file from url
-# Function to upload image to S3
+# 1.) Function to get a file from url
+# 2.) Function to upload image to S3
 
 # <<Amazon CodeWhisperer generated code goes here>>
+
 
 def handler(event, context):
     url = event["queryStringParameters"]["url"]
     name = event["queryStringParameters"]["name"]
 
-    # Get the file from the url
-
+    # pass the output of function #1 as input to function #2
+    download_image(url, name)
     return {
         'statusCode': 200,
         'body': json.dumps('Successfully Uploaded Img!')
