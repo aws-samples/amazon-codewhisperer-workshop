@@ -1,12 +1,10 @@
 #!/usr/bin/env python3
-import os
-
 import aws_cdk as cdk
 from api.infrastructure import APIStack
 from integration.infrastructure import IntegrationStack
 from recognition.infrastructure import RekognitionStack
 
-DEFAULT_REGION = 'us-east-2'
+DEFAULT_REGION = 'us-west-2'
 
 app = cdk.App()
 apiStack = APIStack(app, "APIStack", env=cdk.Environment(region=DEFAULT_REGION))
