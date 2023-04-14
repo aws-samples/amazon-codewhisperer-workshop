@@ -1,0 +1,13 @@
+{
+  "name": "send-email",
+  "version": "0.1.0",
+  "bin": {
+    "send-mail": "send-email.js"
+  },
+  "scripts": {
+    "build": "echo \"The build step is not required when using JavaScript!\" && exit 0"
+  },
+  "dependencies": {
+    "xml-js":"1.6.11"
+  }
+}
