@@ -26,7 +26,7 @@ Use the workshop description and follow the steps for building and deploying the
 
 ## Getting Help
 
-Use the community resources below for getting help with AWS CodeGuru Reviewer.
+Use the community resources below for getting help with Amazon CodeWhisperer.
 
 - Use GitHub issues to report bugs and request features.
 - Open a support ticket with [AWS Support](https://docs.aws.amazon.com/awssupport/latest/user/getting-started.html).
