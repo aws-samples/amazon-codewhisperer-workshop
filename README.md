@@ -6,7 +6,7 @@ This repository accompanies a hands-on workshop that demonstrates how to leverag
 
 Amazon CodeWhisperer is a machine learning (ML)–powered service that helps improve developer productivity by generating code recommendations based on their comments in natural language and code in the integrated development environment (IDE).
 
-With Amazon CodeWhisperer, developers can simply write a comment that outlines a specific task in plain English, such as “upload a file to S3.” Based on this, CodeWhisperer automatically determines which cloud services and public libraries are best suited for the specified task, builds the specific code on the fly, and recommends the generated code snippets directly in the IDE. Moreover, CodeWhisperer seamlessly integrates with your Visual Studio Code and JetBrains IDEs, in such a way that you can stay focused and never leave the development environment. See the [Amazon CodeWhisperer](https://aws.amazon.com/codewhisperer/) page for details.
+With Amazon CodeWhisperer, developers can simply write a comment that outlines a specific task in plain English, such as “upload a file to S3.” Based on this, CodeWhisperer automatically determines which cloud services and public libraries are best suited for the specified task, generates the code, and recommends the generated code snippets directly in the IDE. Moreover, CodeWhisperer seamlessly integrates with your Visual Studio Code and JetBrains IDEs, in such a way that you can stay focused and never leave the development environment. See the [Amazon CodeWhisperer](https://aws.amazon.com/codewhisperer/) page for details.
 
 ## Try out Amazon CodeWhisperer
 
