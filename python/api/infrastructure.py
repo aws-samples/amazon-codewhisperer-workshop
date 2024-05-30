@@ -9,7 +9,6 @@ from aws_cdk import aws_sns as sns
 from aws_cdk import aws_s3_notifications as s3n
 from aws_cdk import Stack
 
-
 class APIStack(Stack):
     def __init__(self, scope: Construct, construct_id: str, **kwargs) -> None:
         super().__init__(scope, construct_id, **kwargs)
