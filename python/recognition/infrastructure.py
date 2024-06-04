@@ -33,7 +33,7 @@ class RekognitionStack(Stack):
         lambda_function = _lambda.Function(
             self,
             "image_recognition",
-            runtime=_lambda.Runtime.PYTHON_3_7,
+            runtime=_lambda.Runtime.PYTHON_3_12,
             handler="image_recognition.handler",
             code=_lambda.Code.from_asset("recognition/runtime"),
             environment={
@@ -81,7 +81,7 @@ class RekognitionStack(Stack):
             self,
             "ListImagesLambda",
             function_name="ListImagesLambda",
-            runtime=_lambda.Runtime.PYTHON_3_7,
+            runtime=_lambda.Runtime.PYTHON_3_12,
             code=_lambda.Code.from_asset("recognition/runtime"),
             handler="list_images.handler",
             environment={"TABLE_NAME": table.table_name}
