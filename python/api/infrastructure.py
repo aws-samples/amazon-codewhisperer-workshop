@@ -19,7 +19,7 @@ class APIStack(Stack):
             self,
             "ImageGetAndSaveLambda",
             function_name="ImageGetAndSaveLambda",
-            runtime=lambda_.Runtime.PYTHON_3_7,
+            runtime=lambda_.Runtime.PYTHON_3_12,
             code=lambda_.Code.from_asset("api/runtime"),
             handler="get_save_image.handler",
             environment={"BUCKET_NAME": bucket.bucket_name}
