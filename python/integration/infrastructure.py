@@ -34,7 +34,7 @@ class IntegrationStack(Stack):
         integration_lambda = lambda_.Function(
             self,
             "IntegrationLambda",
-            runtime=lambda_.Runtime.PYTHON_3_7,
+            runtime=lambda_.Runtime.PYTHON_3_12,
             handler="send_email.handler",
             code=lambda_.Code.from_asset("integration/runtime"),
         )
